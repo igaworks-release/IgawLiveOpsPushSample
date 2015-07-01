@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.igaworks.lucy.igawliveopspushsample" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Your Code -->
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Igaworks Common -->
+        <meta-data android:name="igaworks_app_key" android:value="150661182" />
+        <meta-data android:name="igaworks_hash_key" android:value="f30f89b261a84764" />
+
+        <!-- Igaworks Common -->
+        <receiver android:name="com.igaworks.IgawReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Igaworks LiveOps Push -->
+        <receiver
+            android:name="com.igaworks.liveops.pushservice.LiveOpsGCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.igaworks.lucy.igawliveopspushsample" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Igaworks  -->
+        <service android:enabled="true" android:name="com.igaworks.liveops.pushservice.GCMIntentService" />
+
+        <!-- Igaworks LiveOps Push -->
+        <receiver
+            android:name="com.igaworks.liveops.pushservice.LiveOpsReceiver"
+            android:permission="com.igaworks.lucy.igawliveopspushsample.permission.C2D_MESSAGE">
+            <intent-filter>
+                <action android:name="com.igaworks.liveops.pushservice.CLIENT_PUSH_RECEIVE"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Your Code -->
+        <activity
+            android:name=".SubActivity"
+            android:label="Your Sub Activity"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="SubActivity" android:scheme="IgawLiveOpsPushSample"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+    <!-- Igaworks Common -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Igaworks LiveOps Push -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <!-- Igaworks LiveOps Push -->
+    <permission android:name="com.igaworks.lucy.igawliveopspushsample.permission.C2D_MESSAGE" android:protectionLevel = "signature" />
+    <uses-permission android:name="com.igaworks.lucy.igawliveopspushsample.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+</manifest>
