@@ -1,0 +1,17 @@
+# 라이브오퍼레이션 타겟푸시
+라이브옵스 타겟푸시는 앱 사용자를 필터링하여 타겟팅 된 푸시를 발송할 수 있는 서비스입니다.
+푸시 연동을 통해 앱 운영자는 고도화된 푸시 시스템을 이용하여 운영을 더욱 편리하게 진행할 수 있습니다.
+
+# Igaworks Sample 불러오기
+### 방법 1
+1. Click **"Download ZIP"** button
+1. Unzip files
+1. Open Android Studio
+1. File > Open...
+1. Click download folder
+
+### 방법 2
+1. Copy **"HTTPS clone URL"**
+1. Open Android Studio
+1. VCS > Checkout from Version Control > Git
+1. Paste to Vcs Repository URL, Clone
