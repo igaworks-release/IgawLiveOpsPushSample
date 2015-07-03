@@ -21,3 +21,7 @@
 1. 실행
 
 (주의: 실제로 연동 할 때, AndroidManifest.xml 파일에 권한, 서비스 및 리시버에 연동 중인 *프로젝트 패키지 네임* 입력. 자세한 사항은 연동가이드 참고)
+
+# Igaworks LiveOps Push 연동하기
+연동 가이드와 샘플 프로젝트를 참고하여 연동을 진행합니다. </br>
+<a href="http://help.igaworks.com/hc/ko/3_3/Content/Article/liveops_push_aos" target="_blank">Igaworks LiveOps Push 연동문서 바로가기</a>
