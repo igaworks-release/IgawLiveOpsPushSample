@@ -18,6 +18,6 @@
 
 # LiveOps Push Sample 실행
 1. IGAW 홈페이지에서 발급받은 **앱키, 해시키**를 AndroidManifest.xml 파일에 입력
-1. 실행
-
-(주의: 실제로 연동 할 때, AndroidManifest.xml 파일에 권한, 서비스 및 리시버에 연동 중인 *프로젝트 패키지 네임* 입력)
+1. 실행<br /> 
+(주의: 실제로 연동 할 때, AndroidManifest.xml 파일에 권한, 서비스 및 리시버에 연동 중인 *프로젝트 패키지 네임* 입력<br /> 
+자세한 사항은 연동가이드 참고)
