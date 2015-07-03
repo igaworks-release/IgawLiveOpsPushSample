@@ -15,3 +15,7 @@
 1. Open Android Studio
 1. VCS > Checkout from Version Control > Git
 1. Paste to Vcs Repository URL, Clone
+
+# LiveOps Push Sample 실행
+1. IGAW 홈페이지에서 발급받은 **앱키, 해시키**를 AndroidManifest.xml 파일에 입력
+1. 실행
