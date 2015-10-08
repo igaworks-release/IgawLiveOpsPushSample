@@ -21,11 +21,11 @@
         android:id="@+id/button"
         android:onClick="moveSubactivity"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="47dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -60,49 +60,17 @@
         android:onClick="Flush"
         android:layout_below="@+id/button3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
 
-    <RadioGroup
-        android:layout_width="fill_parent"
+    <Switch
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:background="#79000000"
-        android:layout_below="@+id/button4"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Enable Push"
-            android:id="@+id/textView3" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="On"
-            android:id="@+id/radioButton0"
-            android:checked="true"
-            android:onClick="enablePush"
-            android:layout_marginTop="51dp"
-            android:layout_below="@+id/edit_message"
-            android:layout_alignLeft="@+id/radioButton2"
-            android:layout_alignStart="@+id/radioButton2" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Off"
-            android:id="@+id/radioButton1"
-            android:checked="false"
-            android:onClick="enablePush"
-            android:layout_below="@+id/radioButton"
-            android:layout_toRightOf="@+id/edit_message"
-            android:layout_toEndOf="@+id/edit_message" />
-
-    </RadioGroup>
+        android:text="enable Push"
+        android:id="@+id/switch1"
+        android:layout_alignBottom="@+id/button4"
+        android:onClick="enablePush"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/button4" />
 
 </RelativeLayout>

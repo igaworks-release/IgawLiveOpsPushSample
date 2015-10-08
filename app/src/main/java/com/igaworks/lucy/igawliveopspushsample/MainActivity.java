@@ -1,13 +1,13 @@
 package com.igaworks.lucy.igawliveopspushsample;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 
 import com.igaworks.IgawCommon;
 import com.igaworks.liveops.IgawLiveOps;
@@ -34,13 +34,17 @@ public class MainActivity extends ActionBarActivity {
         // Your Code
         TelephonyManager manager =  (TelephonyManager)getSystemService(MainActivity.this.TELEPHONY_SERVICE);
         usn = manager.getDeviceId().toString();
-        usn = usn+"a";
         encryptUsn = Base64.encodeToString(usn.getBytes(), 0);
 
 
         // Igaworks Common
         IgawCommon.startApplication(MainActivity.this);
         Log.d(tag, "startApplication ::: MainActivity");
+
+        // **IMPORTANT**
+        // Igaworks LiveOps Push for keeping old data
+//        IgawCommon.startApplication(MainActivity.this, usn);
+//        Log.d(tag, "startApplication ::: MainActivity " + usn);
 
         // Igaworks LiveOps Push
         IgawCommon.setUserId(encryptUsn);
@@ -50,12 +54,18 @@ public class MainActivity extends ActionBarActivity {
         IgawLiveOps.initialize(MainActivity.this);
         Log.d(tag, "IgawLiveOps ::: initialize");
 
+        // Igaworks LiveOps Push for Multi
+        // IgawLiveOps.initialize(MainActivity.this, "111111111");
+
         // Igaworks LiveOps Push Optional
         onNewIntent(getIntent());
 
         // Igaworks LiveOps Push Optional
         // IgawLiveOps.enableService(MainActivity.this, true);
 
+        // Igaworks LiveOps Push Optional
+        IgawLiveOps.setNotificationIconStyle(MainActivity.this, "small_icon", "large_icon", 0xFFE12F0F);
+        
         /*
          * Your Code
          */
@@ -77,8 +87,13 @@ public class MainActivity extends ActionBarActivity {
         String usergroupKey = "SubStage";
 
         // Igaworks LiveOps Push Optional
-        IgawLiveOps.setTargetingData(MainActivity.this, usergroupKey, "String" );
-        Log.d(tag, "setTargetingData ::: " + usergroupKey);
+//        IgawLiveOps.setTargetingData(MainActivity.this, usergroupKey, "String" );
+//        Log.d(tag, "setTargetingData ::: " + usergroupKey);
+
+        // **Only for TEST **
+        // Igaworks LiveOps Push Optional
+        IgawLiveOps.flush(MainActivity.this);
+        Log.d(tag, "IgawLiveOps ::: flush");
     }
 
     // Your Code
@@ -116,6 +131,38 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    // Your Code
+    public void enablePush(View view){
+        boolean checked = ((RadioButton)view).isChecked();
+
+        switch (view.getId()){
+            case R.id.radioButton0:
+                if(checked)
+
+                    // Igaworks LiveOps Push Optional
+                    IgawLiveOps.enableService(MainActivity.this, true);
+                    Log.d(tag, "enableService ::: ON" );
+
+                break;
+            case R.id.radioButton1:
+                if(checked)
+
+                    // Igaworks LiveOps Push Optional
+                    IgawLiveOps.enableService(MainActivity.this, false);
+                    Log.d(tag, "enableService ::: OFF" );
+
+                break;
+        }
+    }
+
+
+    // Your Code
+    public void Flush(View view){
+        Log.d(tag, "Flush ::: Button Click");
+
+        IgawLiveOps.flush(MainActivity.this);
+    }
+
     // Igaworks LiveOps Push Optional
     protected void onNewIntent(Intent intent){
         super.onNewIntent(intent);
@@ -126,7 +173,6 @@ public class MainActivity extends ActionBarActivity {
 
         // Igaworks LiveOps Push Optional (URL Type Deeplink)
         IgawLiveOps.onNewIntent(MainActivity.this, intent);
-        Log.d(tag, "onNewIntent ::: URL Type Deeplink");
 
 
         // Igaworks LiveOps Push Optional (Json Type Deeplink)
@@ -135,16 +181,15 @@ public class MainActivity extends ActionBarActivity {
             JSONObject json;
             try {
                 json = new JSONObject(deepLinkStr);
-                Log.d(tag, "deepLinkStr ::: " + deepLinkStr);
+                Log.d(tag, "Json Type Deep Link Data ::: " + deepLinkStr);
 
                 // Your Code
                 if (json != null) {
 
-                    String Param = json.getString("WebURL");
-                    Log.d(tag, "Param ::: " + Param);
+                    /*
+                     * Your code
+                     */
 
-                    Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(Param));
-                    startActivity(intent1);
                 }
             } catch (JSONException e){
                 e.printStackTrace();
@@ -152,7 +197,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
-
 
     @Override
     protected void onResume() {

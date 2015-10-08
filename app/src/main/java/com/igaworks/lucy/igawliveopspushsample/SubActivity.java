@@ -1,5 +1,7 @@
 package com.igaworks.lucy.igawliveopspushsample;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -21,6 +23,9 @@ public class SubActivity extends ActionBarActivity {
             /*
              * Your Code
              */
+        Intent i  = getIntent();
+        Uri data = i.getData();
+        Log.d(tag, "Custom Scheme Type Deep Link Data :::  " + data);
     }
 
 
